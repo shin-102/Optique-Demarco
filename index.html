@@ -5,9 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./src/output.css" rel="stylesheet" />
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <title>DEMARCO Optique</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
   <meta name="description" content="DEMARCO, votre opticien local à Kenitra, se consacre à l'expertise en santé visuelle, en échange de fidélité. Ouvert depuis deux ans, s'efforce d'offrir des conseils personnalisés et des produits de qualité supérieure à sa clientèle. Chaque client est unique, et DEMARCO veille à répondre à ses besoins spécifiques">
+  
   <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -27,350 +31,659 @@
     ]
   }
   </script>
-  <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
-  <link rel="manifest" href="./images/site.webmanifest">
-  <link rel="mask-icon" href="./images/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-    rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5V5W7X3D1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes glow {
+      0%   { filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.5)); }
+      100% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8)); }
+    }
+    
+    @keyframes slideInUp {
+      0% { transform: translateY(100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes slideInLeft {
+      0% { transform: translateX(-100px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+      0% { transform: translateX(100px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
 
-    gtag('config', 'G-G5V5W7X3D1');
-  </script>
+    .glass-morphism {
+      background: rgba(180, 180, 180, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #1a120b 0%, #3a2700 20%, #6b5115 40%, #6b5115 60%, #1a1a1a 80%, #000 100%);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .product-card {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-card {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .service-card:hover::before {
+      left: 100%;
+    }
+
+    .carousel {
+      overflow: hidden;
+      position: relative;
+      border-radius: 20px;
+    }
+
+    .carousel-inner {
+      display: flex;
+      animation: scroll 16s linear infinite;
+    }
+
+    .carousel-inner:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .carousel-item {
+      min-width: 300px;
+      margin-right: 1rem;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-item:hover {
+      transform: scale(1.05);
+    }
+
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-element {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Scroll animations */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .scroll-animate.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Interactive button styles */
+    .btn-primary {
+      background: linear-gradient(45deg, #8b6b1f, #d4af37);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #d4af37, #ffd700);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn-primary:hover::before {
+      left: 0;
+    }
+    
+/* Put this after Tailwind or in a separate stylesheet loaded last */
+.bg-clip-text {
+  -webkit-background-clip: text;    /* Required for Safari/Chrome */
+  background-clip: text;            /* Standard property */
+  -webkit-text-fill-color: transparent; /* Required for Safari/Chrome */
+  color: transparent;               /* Fallback for other browsers */
+  display: inline-block;            /* Ensures background covers the text box */
+}
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .hero-gradient {
+        min-height: 100vh;
+      }
+      
+      .carousel-item {
+        min-width: 250px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/src/output.css">
 </head>
 
-<style>
-  .wavepattern {
-    background-image: 
-        linear-gradient(to right, #ffffff, #ffd771), /* Tailwind gradient */
-        repeating-radial-gradient(circle at 0 0, transparent 0, #fff 5px),
-        repeating-linear-gradient(#fdf86155, #fdf861);
-    background-blend-mode: multiply; /* Adjust this as needed */
-  }
-  h1 { font-size: 58px; font-weight: bold ;}
-  h2 { font-size: 50px; font-weight: bold ;}
-  h3 { font-size: 42px; }
-  h4 { font-size: 36px; }
-  h5 { font-size: 28px; }
-  p { font-size: 16px;}
-  a { font-size: 20px;}
-  em { font-weight: bold;}
-
-  /* HEADER LOGO DROP SHADOW */
-  .logo-shadow {
-    filter: drop-shadow(0 0 0 rgba(255, 221, 51, 0)); /* Initial state */
-    transition: filter 0.3s;
-  }
-  .logo-shadow:hover {
-    filter: drop-shadow(0 4px 20px rgba(255, 221, 51, 1)); /* Yellow shadow on hover */
-  }
-
-  .carousel {
-    overflow: hidden;
-    position: relative;
-  }
-
-  .carousel-inner {
-    display: flex;
-    animation: slide 20s linear infinite;
-  }
-  @media (max-width: 640px) { /* Tailwind's sm breakpoint */
-    .carousel-inner {
-      animation: slide 5s linear infinite; /* Adjusted duration for small devices */
-    }
-  }
-
-  .carousel-item {
-    min-width: 400px;
-    /* Adjust based on your design */
-    margin-right: 1rem;
-    /* Space between images */
-    img {
-      height: 400px;
-    }
-  }
-  
-
-  @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  @media only screen and (max-width: 640px) {
-    .hero-texture {
-      background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'256\' height=\'256\' viewBox=\'0 0 256 256\' style=\'transform: rotate(15deg);\' %3E%3Cpath d=\'M 84.527 40.102 L 73.968 25.444 c -0.215 -0.299 -0.536 -0.508 -0.897 -0.584 l -8.176 -1.726 c -0.796 -0.168 -1.588 0.342 -1.758 1.145 c -0.169 0.802 0.344 1.589 1.145 1.758 l 7.614 1.607 l 8.933 12.4 H 58.157 c -3.459 0 -6.273 2.814 -6.273 6.273 v 2.144 H 38.116 v -2.144 c 0 -3.459 -2.814 -6.273 -6.273 -6.273 H 9.198 l 9.079 -12.399 l 7.62 -1.609 c 0.802 -0.17 1.314 -0.957 1.145 -1.758 c -0.169 -0.801 -0.953 -1.311 -1.758 -1.145 l -8.175 1.726 c -0.357 0.076 -0.674 0.281 -0.89 0.575 L 5.48 40.101 C 2.395 40.493 0 43.128 0 46.318 v 14.307 c 0 3.459 2.814 6.273 6.273 6.273 h 25.57 c 3.459 0 6.273 -2.814 6.273 -6.273 v -9.197 h 13.767 v 9.197 c 0 3.459 2.814 6.273 6.273 6.273 h 25.57 c 3.459 0 6.273 -2.814 6.273 -6.273 V 46.318 C 90 43.13 87.609 40.497 84.527 40.102 z M 35.149 60.625 c 0 1.823 -1.483 3.306 -3.306 3.306 H 6.273 c -1.823 0 -3.306 -1.484 -3.306 -3.306 V 46.318 c 0 -1.823 1.483 -3.306 3.306 -3.306 h 25.57 c 1.823 0 3.306 1.483 3.306 3.306 V 60.625 z M 87.033 60.625 c 0 1.823 -1.484 3.306 -3.306 3.306 h -25.57 c -1.823 0 -3.306 -1.484 -3.306 -3.306 V 46.318 c 0 -1.823 1.484 -3.306 3.306 -3.306 h 25.57 c 1.823 0 3.306 1.483 3.306 3.306 V 60.625 z\' fill=\'rgb(0,0,0)\'/%3E%3C/svg%3E');
-      background-size: 64px 64px; /* Adjust to control the size of the pattern */
-      background-repeat: repeat; /* Ensure it repeats */
-      height: 100vh; /* Full height */
-    }
-  }
-
-</style>
-
-<body class="wavepattern font-arsenal flex flex-col gap-40">
-  <header class="fixed z-10 w-full">
-      <nav class="w-full mx-auto max-w-screen py-6 px-8 shadow-md backdrop-saturate-200 backdrop-blur-2xl border-black/80 bg-soft-jet relative z-50 border-0">
-        <img src="./images/DEMARCO.png" alt="DEMARCO" class="invisible md:visible absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto w-40 transition duration-300 logo-shadow">
-        <div class="flex items-center justify-center md:justify-end mx-auto gap-8">
-          <a href="./index.html" class="font-bold text-slate-200 hover:text-yellow-200">Accueil</a>
-          <a href="./src/about.html" class="font-bold text-slate-200 hover:text-yellow-200">À propos</a>
-          <a href="./src/contact.html" class="font-bold text-slate-200 hover:text-yellow-200">Contact</a>
+<body class="bg-black overflow-x-hidden font-arsenal">
+  <!-- Header -->
+  <header class="fixed top-0 w-screen md:w-full z-50 transition-all duration-300" id="header">
+    <nav class="glass-morphism px-6 py-4 mx-4 my-4 rounded-2xl">
+      <div class="flex items-center justify-between max-w-7xl mx-auto">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <img src="./images/DEMARCO.png" alt="DEMARCO" class="h-12 md:h-16 transition-all duration-300 hover:scale-110">
         </div>
-      </nav>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-yellow-400 transition-all duration-300 font-medium relative group">
+            Accueil
+            <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-400 transition-all duration-300"></span>
+          </a>
+          <a href="./src/about.html" class="text-white hover:text-yellow-600 transition-all duration-300 font-medium relative group">
+            À propos
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="./src/contact.html" class="text-white hover:text-yellow-600 transition-all duration-300 font-medium relative group">
+            Contact
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="text-white hover:text-yellow-600 transition-colors duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-white/20">
+        <div class="flex flex-col space-y-2">
+          <a href="#home" class="text-yellow-400 transition-colors duration-300 py-2">Accueil</a>
+          <a href="./src/about.html" class="text-white focus:text-yellow-600 transition-colors duration-300 py-2">À propos</a>
+          <a href="./src/contact.html" class="text-white focus:text-yellow-600 transition-colors duration-300 py-2">Contact</a>
+        </div>
+      </div>
+    </nav>
   </header>
 
-<!-- *HERO SECTION* -->
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen hero-gradient flex items-center justify-center relative overflow-hidden">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-bounce-slow"></div>
+      <div class="absolute top-40 right-20 w-32 h-32 bg-white/5 rounded-full animate-pulse-slow"></div>
+      <div class="absolute bottom-20 left-20 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
+      <div class="absolute bottom-40 right-10 w-24 h-24 bg-white/5 rounded-full animate-bounce-slow"></div>
+    </div>
 
-  <article class="md:container mx-auto w-full lg:w-2/3  h-screen flex justify-center items-center hero-texture xs:bg-soft-jet/80 md:bg-transparent">
-    <section class="relative">
-      <div class="bg-transparent md:bg-soft-jet/65 inset-0 aspect-video absolute z-[1] rounded-3xl">
-        <div class="flex flex-col justify-center items-center text-center h-full xs:gap-0 md:gap-4 lg:gap-8 xl:gap-16">
-          <h1 class="text-white xs:leading-none md:leading-normal">Bienvenue chez <br><em class="text-[80px]">Optique <span class="bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-400 bg-clip-text text-transparent md:bg-none md:text-current">DEMARCO</span></em></h1>
-          <blockquote class="italic font-semibold text-white">
-            <h4 class="lg:text-4xl xs:text-xl font-thin">" We bet you would look good in glasses  "</h4>
-          </blockquote>
-        </div>
-      </div>
-      <img src="./images/2023-05-18.jpg" alt="Demarco local" class="opacity-0 md:opacity-100 blur-sm mx-auto w-full aspect-video rounded-3xl">
-    </section>
-  </article>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="relative rounded-3xl overflow-hidden animate-fadeIn text-center"> <!-- wrapper defines size -->
+      <!-- image fills the wrapper but is contained -->
+      <img src="./images/2023-05-18.jpg" alt="Demarco local"
+        class="absolute inset-0 w-full h-full object-cover opacity-50 md:blur-sm z-0" />
 
-  <!-- *ABOUT SECTION* -->
+      <!-- glass stays in normal flow and therefore sets wrapper height -->
+      <div class="glass-morphism relative z-10 px-8 py-10 md:p-16">
+        <h2 class="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 text-shadow">
+          Bienvenue chez
+        </h2>
 
-  <article class="container mx-auto flex flex-col gap-10 items-center">
-    <section>
-      <h2>À propos de nous</h2>
-    </section>
-    <section class="flex lg:flex-row xs:flex-col text-left md:text-center leading-8">
-      <h5 class="italic"> <em>DEMARCO</em>, votre opticien local à <em>Kenitra</em>, se consacre à l'expertise en santé visuelle, en échange de fidélité. Ouvert
-      depuis deux ans, s'efforce d'offrir des conseils personnalisés et des produits de qualité supérieure à sa
-      clientèle. 
-      <br>
-      Chaque client est unique, et <em>DEMARCO</em> veille à répondre à ses besoins spécifiques.
-      </h5>
-    </section>
-    <section class="block">
-      <div class="carousel w-full max-w-xs md:max-w-2xl lg:max-w-7xl border-x-2 border-x-soft-jet border-opacity-20"> <!--Change max-w-[] for invisible cloak -->
-        <div class="carousel-inner">
-          <div class="carousel-item">
-            <a href="https://www.instagram.com/p/C2-2JI7Ct4J/"><img src="./images/G1.jpg" alt="Demarco Instagram post 1" class="w-full"></a>
-          </div>
-          <div class="carousel-item">
-            <a href="https://www.instagram.com/p/C2-2O5xCtkz/"><img src="./images/G2.jpg" alt="Demarco Instagram post 2" class="w-full"></a>
-          </div>
-          <div class="carousel-item">
-            <a href="https://www.instagram.com/p/C2-46NjCUrg/?img_index=1"><img src="./images/S1.jpg" alt="Demarco Instagram post 3" class="w-full"></a>
-          </div>
-          <div class="carousel-item">
-            <a href="https://www.instagram.com/p/C2-5FWli5hc/?img_index=1"><img src="./images/S2.jpg" alt="Demarco Instagram post 4" class="w-full"></a>
-          </div>
-          <div class="carousel-item">
-            <a href="https://www.instagram.com/p/C2-6rANCBWM/?img_index=1"><img src="./images/S3.jpg" alt="Demarco Instagram post 5" class="w-full"></a>
-          </div>
-          <div class="carousel-item">
-            <a href="https://www.instagram.com/p/C2-7BuhiHOZ/?img_index=1"><img src="./images/S4.jpg" alt="Demarco Instagram post 6" class="w-full"></a>
-          </div>
-          <div class="carousel-item">
-            <a href="https://www.instagram.com/p/C2-5QO8CQHt/?img_index=1"><img src="./images/S5.jpg" alt="Demarco Instagram post 7" class="w-full"></a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </article>
+        <h1 class="font-playfair text-5xl md:text-8xl lg:text-9xl font-bold mb-8 animate-glow
+                  bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+          DEMARCO
+        </h1>
 
-  <!-- *PRODUCTS SECTION* -->
+        <blockquote class="text-xl md:text-2xl lg:text-3xl text-white/90 italic font-light mb-8 text-shadow">
+          "We bet you would look good in glasses"
+        </blockquote>
 
-  <article class="container mx-auto flex flex-col gap-10 items-center">
-    <section>
-      <h2>Nos Produits</h2>
-    </section>
-    <section class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      
-      <div class="relative shadow-md shadow-[#35353580]">
-        <span class="absolute right-0 top-4 bg-soft-jet px-4 rounded-s-3xl">
-          <h4 class="text-yellow-200">Glasses</h4>
-        </span>
-        <img src="./images/Demarco-G.png" alt="Demarco glasses" class="lg:h-[450px]">
-      </div>
-
-      <div class="relative shadow-md shadow-[#35353580]">
-        <span class="absolute right-0 top-4 bg-soft-jet px-4 rounded-s-3xl">
-          <h4 class="text-yellow-200">Sunglasses</h4>
-        </span>
-        <img src="./images/Demarco-SG.png" alt="Demarco Sunglasses" class="lg:h-[450px]">
-      </div>
-
-      <div class="relative shadow-md shadow-[#35353580]">
-        <span class="absolute right-0 top-4 bg-soft-jet px-4 rounded-s-3xl">
-          <h4 class="text-yellow-200">Contact Lens</h4>
-        </span>
-        <img src="./images/Demarco-CL.png" alt="Demarco Lens" class="lg:h-[450px]">
-      </div>
-    </section>
-  </article>
-
-  <!-- *SERVICES SECTION* -->
-
-  <article class="flex flex-col items-center gap-20 sm:py-16 lg:py-24">
-    <section>
-      <h2>Nos Services</h2>
-    </section>
-    <section class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 text-center sm:grid-cols-2 gap-y-8 lg:grid-cols-4 sm:gap-12">
-        
-        <div class="py-8 px-2 rounded-lg transform transition duration-500 hover:translate-x-2 hover:translate-y-2 border border-black/0 hover:border-black">
-          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-blue-100 rounded-full">
-            <img src="./images/glasses-mask-svgrepo-com.svg" alt="Demarco Consultation" class="w-8">
-          </div>
-          <h3 class="mt-8 font-semibold text-black">Consultation</h3>
-          <p class="mt-4 text-gray-600">On propose un avis d'expert sur les lunettes qui conviennent à la fois à la santé et à l'esthétique. Chaque consultation
-          est personnalisée pour répondre aux attentes visuelles de chaque client.</p>
-        </div>
-
-        <div class="py-8 px-2 rounded-lg transform transition duration-500 hover:translate-x-2 hover:translate-y-2 border border-black/0 hover:border-black">
-          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-orange-100 rounded-full">
-            <img src="./images/sell-product-svgrepo-com.svg" alt="Demarco Vente" class="w-8">
-          </div>
-          <h3 class="mt-8 font-semibold text-black">Vente</h3>
-          <p class="mt-4 text-gray-600"><em>DEMARCO</em> offre une large gamme de lunettes et de lentilles de contact. Avec des marques renommées et des designs
-          contemporains, chaque client peut trouver le style qui lui convient.</p>
-        </div>
-
-        <div class="py-8 px-2 rounded-lg transform transition duration-500 hover:translate-x-2 hover:translate-y-2 border border-black/0 hover:border-black">
-          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-green-100 rounded-full">
-            <img src="./images/fix-work-repair-system-svgrepo-com.svg" alt="Demarco Fabrication" class="w-8">
-          </div>
-          <h3 class="mt-8 font-semibold text-black">Fabrication</h3>
-          <p class="mt-4 text-gray-600">On utilise un équipement de pointe pour créer des verres sur mesure selon les prescriptions. Chaque paire de lunettes est
-          fabriquée avec précision pour garantir une vision parfaite.</p>
-        </div>
-
-        <div class="py-8 px-2 rounded-lg transform transition duration-500 hover:translate-x-2 hover:translate-y-2 border border-black/0 hover:border-black">
-          <div class="flex items-center justify-center w-20 h-20 mx-auto bg-red-100 rounded-full">
-            <img src="./images/repair-box-outline-svgrepo-com.svg" alt="Demarco Réparation" class="w-8">
-          </div>
-          <h3 class="mt-8 font-semibold text-black">Réparation</h3>
-          <p class="mt-4 text-gray-600"><em>DEMARCO</em> propose des services de réparation pour tous types de lunettes. Que ce soit pour un ajustement ou un
-          remplacement de pièces, DEMARCO est là pour assurer votre satisfaction.</p>
-        </div>
-      </div>
-    </section>
-  </article>
-
-  <!-- *FOOTER SECTION* -->
-
-  <footer class="bg-soft-jet/60 w-full h-screen flex flex-col items-center">
-    <article>
-      <img src="./images/DEMARCO-b.png" alt="Demarco Footer" class="w-[600px] mt-20">
-    </article>
-
-    <article class="flex flex-col justify-center items-center" x-data="{ openTab: 1 }">
-
-      <div class="flex space-x-4 p-2 bg-soft-jet text-white rounded-t-lg shadow-md lg:w-[30rem]">
-        <button x-on:click="openTab = 1" :class="{ 'bg-yellow-400': openTab === 1 }"
-          class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">
-          Email
-        </button>
-        <button x-on:click="openTab = 2" :class="{ 'bg-yellow-400': openTab === 2 }"
-          class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">
-          Whatsapp
+        <button
+          class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-2xl">
+          <a href="./src/about.html#gallery">Découvrir nos produits</a>
         </button>
       </div>
+    </div>
+  </div>
 
-      <form x-show="openTab === 1" class="bg-soft-jet text-white rounded-b-lg px-8 py-6 mx-auto  lg:w-[30rem]"
-        action="mailto:lef.kaouthar.9898@gmail.com" method="POST" enctype="text/plain" onsubmit="return validateForm()">
-        <div class="mb-4">
-          <label for="name" class="block font-medium mb-2">Nom Complet</label>
-          <input type="text" id="name" placeholder="Nom et Prenom" name="name" pattern="[A-Za-z ]+" title="Name should only contain alphabetic characters"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400" required>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white/80 rounded-full mt-2 animate-pulse"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gradient-to-br from-[#1a1a1a] to-[#3b2f2f]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-animate">
+        <h2 class="font-playfair text-4xl md:text-6xl font-bold text-gray-50 mb-6">
+          À propos de nous
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-yellow-600 to-yellow-400 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="flex flex-col gap-12 items-center">
+        <div class="scroll-animate">
+          <div class="glass-morphism p-8 rounded-3xl shadow-xl">
+            <p class="text-lg md:text-xl leading-relaxed text-gray-100 italic">
+              <span class="font-bold text-yellow-600">DEMARCO</span>, votre opticien local à 
+              <span class="font-bold text-yellow-600">Kenitra</span>, se consacre à l'expertise en santé visuelle, 
+              en échange de fidélité. Ouvert depuis deux ans, s'efforce d'offrir des conseils personnalisés et des 
+              produits de qualité supérieure à sa clientèle.
+            </p>
+            <p class="text-lg md:text-xl leading-relaxed text-gray-100 italic mt-6">
+              Chaque client est unique, et <span class="font-bold text-yellow-600">DEMARCO</span> veille à répondre 
+              à ses besoins spécifiques.
+            </p>
+          </div>
         </div>
-        <div class="mb-4">
-          <label for="age" class="block font-medium mb-2">Age</label>
-          <input type="number" id="age" placeholder="Votre age" name="age" min="15"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400" required>
-        </div>
-        <div class="mb-4">
-          <label for="phone" class="block font-medium mb-2">Numero/Tel</label>
-          <input type="tel" id="phone" name="phone" pattern="[0-9]{10,}" title="Phone number should be at least 10 digits" placeholder="Commence avec 06 ou 07"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400" required>
-        </div>
-        <div class="mb-4">
-          <label class="block font-medium mb-2">Type</label>
-          <div class="flex flex-wrap -mx-2">
-            <div class="px-2 w-1/3">
-              <label for="glasses-normal" class="block font-medium mb-2">
-                <input type="radio" id="glasses-normal" name="type" value="Lunettes" class="mr-2">Lunettes
-              </label>
-            </div>
-            <div class="px-2 w-1/3">
-              <label for="glasses-sun" class="block font-medium mb-2">
-                <input type="radio" id="glasses-sun" name="type" value="Lunettes-Soleil" class="mr-2">Lunettes Soleil
-              </label>
-            </div>
-            <div class="px-2 w-1/3">
-              <label for="glasses-lens" class="block font-medium mb-2">
-                <input type="radio" id="glasses-lens" name="type" value="Lentille-contact" class="mr-2">Lentille contact
-              </label>
+
+        <div class="scroll-animate max-w-sm md:max-w-6xl">
+          <div class="carousel glass-morphism py-6 px-8 shadow-2xl">
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <a href="https://www.instagram.com/p/C2-2JI7Ct4J/" class="block transform hover:scale-105 transition-transform duration-300">
+                  <img src="./images/G1.jpg" alt="Demarco Instagram post 1" class="w-full h-64 object-center rounded-lg shadow-lg">
+                </a>
+              </div>
+              <div class="carousel-item">
+                <a href="https://www.instagram.com/p/C2-2O5xCtkz/" class="block transform hover:scale-105 transition-transform duration-300">
+                  <img src="./images/G2.jpg" alt="Demarco Instagram post 2" class="w-full h-64 object-center rounded-lg shadow-lg">
+                </a>
+              </div>
+              <div class="carousel-item">
+                <a href="https://www.instagram.com/p/C2-46NjCUrg/?img_index=1" class="block transform hover:scale-105 transition-transform duration-300">
+                  <img src="./images/S1.jpg" alt="Demarco Instagram post 3" class="w-full h-64 object-center rounded-lg shadow-lg">
+                </a>
+              </div>
+              <div class="carousel-item">
+                <a href="https://www.instagram.com/p/C2-5FWli5hc/?img_index=1" class="block transform hover:scale-105 transition-transform duration-300">
+                  <img src="./images/S2.jpg" alt="Demarco Instagram post 4" class="w-full h-64 object-center rounded-lg shadow-lg">
+                </a>
+              </div>
+              <div class="carousel-item">
+                <a href="https://www.instagram.com/p/C2-6rANCBWM/?img_index=1" class="block transform hover:scale-105 transition-transform duration-300">
+                  <img src="./images/S3.jpg" alt="Demarco Instagram post 5" class="w-full h-64 object-center rounded-lg shadow-lg">
+                </a>
+              </div>
+              <div class="carousel-item">
+                <a href="https://www.instagram.com/p/C2-7BuhiHOZ/?img_index=1" class="block transform hover:scale-105 transition-transform duration-300">
+                  <img src="./images/S4.jpg" alt="Demarco Instagram post 6" class="w-full h-64 object-center rounded-lg shadow-lg">
+                </a>
+              </div>
+              <div class="carousel-item">
+                <a href="https://www.instagram.com/p/C2-5QO8CQHt/?img_index=1" class="block transform hover:scale-105 transition-transform duration-300">
+                  <img src="./images/S5.jpg" alt="Demarco Instagram post 7" class="w-full h-64 object-center rounded-lg shadow-lg">
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="mb-4">
-          <label for="message" class="block font-medium mb-2">Message</label>
-          <textarea id="message" name="message" placeholder="Décrivez d&#39avantage afin que nous puissions vous aider"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400"
-            rows="4" required minlength="10"></textarea>
-        </div>
-        <div class="flex justify-center items-center">
-          <button type="submit"
-            class="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition ease-in duration-300">Submit</button>
-        </div>
-      </form>
+      </div>
+    </div>
+  </section>
 
-      <div x-show="openTab === 2" class="bg-soft-jet rounded-b-lg px-8 py-6 mx-auto lg:w-[30rem] flex justify-center">
-        <a title="Whatsapp contact" href="https://wa.me/212663582989">
-          <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 256 256"
-          class="fill-yellow-400 hover:fill-yellow-600 transition ease-in duration-300">
-            <g transform="translate(1.41 1.41) scale(2.81 2.81)" fill="inherit">
-            <path
-            d="M 45 0 C 20.147 0 0 20.147 0 45 c 0 24.853 20.147 45 45 45 s 45 -20.147 45 -45 C 90 20.147 69.853 0 45 0 z M 45.454 68.712 c -4.304 0 -8.347 -1.1 -11.865 -3.031 L 20 70 l 4.431 -13.068 c -2.235 -3.67 -3.522 -7.974 -3.522 -12.576 C 20.908 30.904 31.898 20 45.454 20 C 59.013 20 70 30.904 70 44.356 S 59.012 68.712 45.454 68.712 z" />
-            <path
-            d="M 45.454 23.879 c -11.38 0 -20.637 9.186 -20.637 20.477 c 0 4.481 1.461 8.63 3.931 12.006 l -2.578 7.605 l 7.931 -2.521 c 3.258 2.139 7.162 3.387 11.354 3.387 c 11.378 0 20.637 -9.185 20.637 -20.476 C 66.092 33.066 56.834 23.879 45.454 23.879 z M 57.499 52.805 c -0.503 1.393 -2.96 2.738 -4.062 2.837 c -1.103 0.1 -1.103 0.897 -7.221 -1.492 c -6.117 -2.391 -9.977 -8.615 -10.278 -9.013 c -0.302 -0.398 -2.457 -3.236 -2.457 -6.174 c 0 -2.937 1.554 -4.382 2.105 -4.979 c 0.552 -0.597 1.204 -0.747 1.605 -0.747 s 0.803 0.05 1.153 0.05 c 0.352 0 0.852 -0.199 1.353 0.996 c 0.501 1.196 1.706 4.133 1.856 4.432 c 0.151 0.299 0.252 0.648 0.05 1.046 c -0.199 0.399 -0.299 0.647 -0.601 0.996 c -0.301 0.348 -0.632 0.778 -0.903 1.046 c -0.301 0.297 -0.614 0.62 -0.264 1.217 c 0.351 0.598 1.559 2.552 3.347 4.134 c 2.298 2.033 4.237 2.664 4.838 2.963 c 0.602 0.299 0.953 0.249 1.304 -0.151 c 0.352 -0.398 1.505 -1.742 1.906 -2.34 c 0.401 -0.597 0.803 -0.497 1.354 -0.298 c 0.55 0.198 3.509 1.643 4.111 1.942 c 0.601 0.298 1.002 0.448 1.153 0.697 C 57.999 50.214 57.999 51.409 57.499 52.805 z" />
-            </g>
-          </svg> 
-        </a>
-        
+  <!-- Products Section -->
+  <section id="products" class="py-20 bg-gradient-to-br from-[#121212] to-[#1a1a1a]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-animate">
+        <h2 class="font-playfair text-4xl md:text-6xl font-bold text-gray-50 mb-6">
+          Nos Produits
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-yellow-600 to-yellow-400 mx-auto rounded-full"></div>
       </div>
 
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="product-card glass-morphism rounded-3xl overflow-hidden shadow-2xl scroll-animate">
+          <div class="relative group">
+            <img src="./images/Demarco-G.png" alt="Demarco glasses" class="w-full h-80 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-4 right-4">
+              <span class="bg-gradient-to-r from-yellow-600 to-yellow-400 text-black/80 px-4 py-2 rounded-full font-semibold shadow-lg">
+                Glasses
+              </span>
+            </div>
+            <div class="absolute bottom-0 left-4 right-4 transform md:translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-white text-xl font-bold mb-4 md:mb-2">Lunettes de Vue</h3>
+              <p class="text-white md:text-white/80 text-sm mb-4 md:mb-2">Collection premium de montures élégantes et confortables</p>
+            </div>
+          </div>
+        </div>
 
-    </article>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+        <div class="product-card glass-morphism rounded-3xl overflow-hidden shadow-2xl scroll-animate">
+          <div class="relative group">
+            <img src="./images/Demarco-SG.png" alt="Demarco Sunglasses" class="w-full h-80 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-4 right-4">
+              <span class="bg-gradient-to-r from-yellow-600 to-yellow-400 text-black/80 px-4 py-2 rounded-full font-semibold shadow-lg">
+                Sunglasses
+              </span>
+            </div>
+            <div class="absolute bottom-0 left-4 right-4 transform md:translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-white text-xl font-bold mb-4 md:mb-2">Lunettes de Soleil</h3>
+              <p class="text-white md:text-white/80 text-sm mb-4 md:mb-2">Protection UV et style tendance pour toutes les occasions</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card glass-morphism rounded-3xl overflow-hidden shadow-2xl scroll-animate">
+          <div class="relative group">
+            <img src="./images/Demarco-CL.png" alt="Demarco Lens" class="w-full h-80 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-4 right-4">
+              <span class="bg-gradient-to-r from-yellow-600 to-yellow-400 text-black/80 px-4 py-2 rounded-full font-semibold shadow-lg">
+                Contact Lens
+              </span>
+            </div>
+            <div class="absolute bottom-0 left-4 right-4 transform md:translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <h3 class="text-white text-xl font-bold mb-4 md:mb-2">Lentilles de Contact</h3>
+              <p class="text-white md:text-white/80 text-sm mb-4 md:mb-2">Solutions de vision invisibles et confortables</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-gradient-to-br from-[#1a1a1a] to-[#3b2f2f]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-animate">
+        <h2 class="font-playfair text-4xl md:text-6xl font-bold text-gray-50 mb-6">
+          Nos Services
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-yellow-600 to-yellow-400 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="service-card glass-morphism p-8 rounded-3xl shadow-xl hover:shadow-2xl scroll-animate">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-100 mb-4">Consultation</h3>
+          <p class="text-gray-300 leading-relaxed">Avis d'expert sur les lunettes qui conviennent à la fois à la santé et à l'esthétique. Consultation personnalisée pour chaque client.</p>
+        </div>
+
+        <div class="service-card glass-morphism p-8 rounded-3xl shadow-xl hover:shadow-2xl scroll-animate">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2L3 7v11a1 1 0 001 1h12a1 1 0 001-1V7l-7-5zM9 9a1 1 0 012 0v4a1 1 0 11-2 0V9z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-100 mb-4">Vente</h3>
+          <p class="text-gray-300 leading-relaxed">Large gamme de lunettes et lentilles de contact avec des marques renommées et des designs contemporains pour tous les styles.</p>
+        </div>
+
+        <div class="service-card glass-morphism p-8 rounded-3xl shadow-xl hover:shadow-2xl scroll-animate">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-100 mb-4">Fabrication</h3>
+          <p class="text-gray-300 leading-relaxed">Équipement de pointe pour créer des verres sur mesure selon les prescriptions. Fabrication précise pour une vision parfaite.</p>
+        </div>
+
+        <div class="service-card glass-morphism p-8 rounded-3xl shadow-xl hover:shadow-2xl scroll-animate">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-orange-600 to-orange-800 rounded-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-100 mb-4">Réparation</h3>
+          <p class="text-gray-300 leading-relaxed">Services de réparation pour tous types de lunettes. Ajustements et remplacements de pièces pour votre satisfaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 gradient-bg">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16 scroll-animate">
+        <h2 class="font-playfair text-4xl md:text-6xl font-bold text-white mb-6">
+          Contactez-nous
+        </h2>
+        <div class="w-24 h-1 bg-yellow-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="glass-morphism rounded-3xl p-8 shadow-2xl scroll-animate">
+        <div class="flex justify-center mb-8">
+          <img src="./images/DEMARCO-w.png" alt="Demarco Footer" class="h-32">
+        </div>
+
+        <div id="contact-tabs" class="mb-8">
+          <div class="flex bg-white/10 rounded-2xl p-2">
+            <button onclick="showTab('email')" id="email-tab"
+              class="flex-1 py-3 px-6 rounded-xl text-white font-semibold transition-all duration-300 bg-transparent">
+              📧 Email
+            </button>
+            <button onclick="showTab('whatsapp')" id="whatsapp-tab"
+              class="flex-1 py-3 px-6 rounded-xl text-white font-semibold transition-all duration-300 bg-transparent">
+              💬 WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- Email Form -->
+        <div id="email-content" class="tab-content">
+          <form action="mailto:lef.kaouthar.9898@gmail.com" method="POST" enctype="text/plain" onsubmit="return validateForm()" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="form-group">
+                <label for="name" class="block text-white font-medium mb-2">Nom Complet</label>
+                <input type="text" id="name" name="name" placeholder="Nom et Prénom" required
+                  class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
+              </div>
+              <div class="form-group">
+                <label for="age" class="block text-white font-medium mb-2">Âge</label>
+                <input type="number" id="age" name="age" placeholder="Votre âge" min="15" required
+                  class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone" class="block text-white font-medium mb-2">Numéro de Téléphone</label>
+              <input type="tel" id="phone" name="phone" placeholder="Commence avec 06 ou 07" pattern="[0-9]{10,}" required
+                class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
+            </div>
+
+            <div class="form-group">
+              <label class="block text-white font-medium mb-4">Type de Service</label>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input type="radio" name="type" value="Lunettes" class="w-5 h-5 text-yellow-400">
+                  <span class="text-white">Lunettes</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input type="radio" name="type" value="Lunettes-Soleil" class="w-5 h-5 text-yellow-400">
+                  <span class="text-white">Lunettes de Soleil</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input type="radio" name="type" value="Lentille-contact" class="w-5 h-5 text-yellow-400">
+                  <span class="text-white">Lentilles de Contact</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="block text-white font-medium mb-2">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Décrivez davantage afin que nous puissions vous aider" required minlength="10"
+                class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300"></textarea>
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn-primary px-8 py-4 rounded-xl text-white font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg">
+                Envoyer le Message
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- WhatsApp Content -->
+        <div id="whatsapp-content" class="tab-content hidden text-center">
+          <div class="py-36">
+            <h3 class="text-2xl font-bold text-white mb-6">Contactez-nous sur WhatsApp</h3>
+            <p class="text-white/80 mb-12">Pour une réponse rapide, envoyez-nous un message sur WhatsApp</p>
+            <a href="https://wa.me/212663582989" class="inline-block transform hover:scale-110 transition-all duration-300">
+              <div class="bg-green-500 hover:bg-green-600 rounded-full p-6 shadow-2xl floating-element">
+                <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Scroll animations
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.scroll-animate');
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('animate');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Run on page load
+
+    // Tab switching
+    function showTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      document.querySelectorAll('#contact-tabs button').forEach(tab => {
+        // remove the actual yellow class(s)
+        tab.classList.remove('active', 'bg-yellow-400', 'bg-yellow-600');
+        tab.classList.add('bg-transparent');
+      });
+
+      document.getElementById(tabName + '-content').classList.remove('hidden');
+
+      const activeTab = document.getElementById(tabName + '-tab');
+      activeTab.classList.add('active', 'bg-yellow-600');
+      activeTab.classList.remove('bg-transparent');
+    }
+
+    // initialize properly
+    document.addEventListener('DOMContentLoaded', () => showTab('email'));
+
+
+    // Form validation
     function validateForm() {
-      let phoneInput = document.getElementById('phone');
+      const phoneInput = document.getElementById('phone');
       if (phoneInput.value.length < 10) {
-        alert("Phone number should be at least 10 digits");
+        alert("Le numéro de téléphone doit contenir au moins 10 chiffres");
         return false;
       }
-
       return true;
     }
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(26, 26, 26, 0.95)';
+        header.style.backdropFilter = 'blur(20px)';
+      } else {
+        header.style.background = 'rgba(26, 26, 26, 0)';
+        header.style.backdropFilter = 'blur(10px)';
+      }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
   </script>
-  </footer>
 </body>
 
 </html>
