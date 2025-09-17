@@ -3,162 +3,321 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./output.css" rel="stylesheet" />
-  <title>Optique DEMARCO Contact page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>DEMARCO Optique - Galerie Instagram</title>
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
-  <link rel="manifest" href="../images/site.webmanifest">
-  <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="description"
+    content="Découvrez notre collection exclusive et nos dernières créations sur Instagram. DEMARCO Optique, votre expert en lunettes à Kenitra.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'playfair': ['Playfair Display', 'serif'],
+          },
+          animation: {
+            'fadeInUp': 'fadeInUp 0.6s ease-out',
+            'slideInLeft': 'slideInLeft 0.8s ease-out',
+            'slideInRight': 'slideInRight 0.8s ease-out',
+            'pulse-slow': 'pulse 3s ease-in-out infinite',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @keyframes slideInLeft {
+      0% {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .glass-morphism {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 165, 0, 0.2);
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 25%, #4a2c15 50%, #5d3a1a 75%, #1a1a1a 100%);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+
+    .post-card {
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform-origin: center;
+    }
+
+    .post-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 165, 0, 0.15);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+  </style>
 </head>
 
-<style>
-  .wavepattern {
-    background-image: 
-        linear-gradient(to right, #ffffff, #ffd771), /* Tailwind gradient */
-        repeating-radial-gradient(circle at 0 0, transparent 0, #fff 5px),
-        repeating-linear-gradient(#fdf86155, #fdf861);
-    background-blend-mode: multiply; /* Adjust this as needed */
-  }
-  h1 { font-size: 60px; font-weight: bold ;}
-  h2 { font-size: 50px; font-weight: bold ;}
-  h3 { font-size: 42px; }
-  h4 { font-size: 36px; }
-  h5 { font-size: 28px; }
-  p { font-size: 16px;}
-  a { font-size: 20px;}
+<body class="font-inter bg-gray-900 overflow-x-hidden">
+  <!-- Header -->
+  <header class="fixed top-0 w-screen md:w-full z-50 transition-all duration-300" id="header">
+    <nav class="glass-morphism px-6 py-4 mx-4 my-4 rounded-2xl">
+      <div class="flex items-center justify-between max-w-7xl mx-auto">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <img src="../images/DEMARCO.png" alt="DEMARCO"
+            class="h-12 md:h-16 transition-all duration-300 hover:scale-110">
+        </div>
 
-  /* HEADER LOGO DROP SHADOW */
-  .logo-shadow {
-    filter: drop-shadow(0 0 0 rgba(255, 221, 51, 0)); /* Initial state */
-    transition: filter 0.3s;
-  }
-  .logo-shadow:hover {
-    filter: drop-shadow(0 4px 20px rgba(255, 221, 51, 1)); /* Yellow shadow on hover */
-  }
-</style>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="../index.html"
+            class="text-white hover:text-yellow-600 transition-all duration-300 font-medium relative group">
+            Accueil
+            <span
+              class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="../src/about.html" class="text-white hover:text-yellow-600 transition-all duration-300 font-medium relative group">
+            À propos
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-600 group-hover:w-full"></span>
+          </a>
+          <a href="#contact"
+            class="text-yellow-400 transition-all duration-300 font-medium relative group">
+            Contact
+            <span
+              class="absolute -bottom-1 left-0 w-full h-0.5 bg-yellow-400 transition-all duration-300"></span>
+          </a>
+        </div>
 
-<body class="wavepattern font-arsenal flex flex-col gap-40">
-  <header class="fixed z-10 w-full">
-    <nav
-      class="w-full mx-auto max-w-screen py-6 px-8 shadow-md backdrop-saturate-200 backdrop-blur-2xl border-black/80 bg-soft-jet relative z-50 border-0">
-      <img src="../images/DEMARCO.png" alt="DEMARCO"
-        class="invisible md:visible absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto w-40 transition duration-300 logo-shadow">
-      <div class="flex items-center justify-center md:justify-end mx-auto gap-8">
-        <a href="../index.html" class="font-bold text-slate-200 hover:text-yellow-200">Accueil</a>
-        <a href="../src/about.html" class="font-bold text-slate-200 hover:text-yellow-200">À propos</a>
-        <a href="../src/contact.html" class="font-bold text-slate-200 hover:text-yellow-200">Contact</a>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="text-white hover:text-yellow-300 transition-colors duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-white/20">
+        <div class="flex flex-col space-y-2">
+          <a href="../index.html"
+            class="text-white focus:text-yellow-600 transition-colors duration-300 py-2">Accueil</a>
+          <a href="../src/about.html" class="text-white focus:text-yellow-600 py-2">À propos</a>
+          <a href="#contact"
+            class="text-yellow-400 transition-colors duration-300 py-2">Contact</a>
+        </div>
       </div>
     </nav>
   </header>
 
-  <footer class="w-full h-screen flex flex-col items-center relative"> 
-    <iframe class="w-full h-[150px] md:h-full xs:mt-40 md:mt-0" style="min-height: 500px;"
+  <section class="w-full h-screen flex flex-col items-center justify-center relative"> 
+    <iframe class="w-full min-h-[100rem] md:h-full xs:mt-40 md:mt-0" style="filter: invert(90%) hue-rotate(180deg);"
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1080.9304778313485!2d-6.585257663205009!3d34.25821994773918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda759a0eb0531a9%3A0x9d3ec8bf917362bf!2sOptique%20Demarco!5e0!3m2!1sen!2sma!4v1726617342853!5m2!1sen!2sma" title="Optique Demarco"></iframe>
 
-    <section class="md:absolute md:right-0 md:inset-y-0 flex flex-col justify-center items-center" style="right: 70px;" x-data="{ openTab: 1 }">
-  
-      <div class="flex space-x-4 p-2 bg-soft-jet text-white rounded-t-lg shadow-md lg:w-[30rem]">
-        <button x-on:click="openTab = 1" :class="{ 'bg-yellow-400': openTab === 1 }"
-          class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">
-          Email
-        </button>
-        <button x-on:click="openTab = 2" :class="{ 'bg-yellow-400': openTab === 2 }"
-          class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">
-          Whatsapp
-        </button>
+    <div class="glass-morphism animate-slideInLeft rounded-3xl p-8 shadow-2xl scroll-animate md:absolute md:right-20 md:h-fit">
+      <div class="flex justify-center mb-8">
+        <img src="../images/DEMARCO-w.png" alt="Demarco Footer" class="h-32">
       </div>
-  
-      <form x-show="openTab === 1" class="bg-soft-jet text-white rounded-b-lg px-8 py-6 mx-auto  lg:w-[30rem]"
-        action="mailto:lef.kaouthar.9898@gmail.com" method="POST" enctype="text/plain" onsubmit="return validateForm()">
-        <div class="mb-4">
-          <label for="name" class="block font-medium mb-2">Nom Complet</label>
-          <input type="text" id="name" placeholder="Nom et Prenom" name="name" pattern="[A-Za-z ]+"
-            title="Name should only contain alphabetic characters"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400"
-            required>
+    
+      <div id="contact-tabs" class="mb-8">
+        <div class="flex bg-white/10 rounded-2xl p-2">
+          <button onclick="showTab('email')" id="email-tab"
+            class="flex-1 py-3 px-6 rounded-xl text-white font-semibold transition-all duration-300 bg-transparent">
+            📧 Email
+          </button>
+          <button onclick="showTab('whatsapp')" id="whatsapp-tab"
+            class="flex-1 py-3 px-6 rounded-xl text-white font-semibold transition-all duration-300 bg-transparent">
+            💬 WhatsApp
+          </button>
         </div>
-        <div class="mb-4">
-          <label for="age" class="block font-medium mb-2">Age</label>
-          <input type="number" id="age" placeholder="Votre age" name="age" min="15"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400"
-            required>
-        </div>
-        <div class="mb-4">
-          <label for="phone" class="block font-medium mb-2">Numero/Tel</label>
-          <input type="tel" id="phone" name="phone" pattern="[0-9]{10,}" title="Phone number should be at least 10 digits"
-            placeholder="Commence avec 06 ou 07"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400"
-            required>
-        </div>
-        <div class="mb-4">
-          <label class="block font-medium mb-2">Type</label>
-          <div class="flex flex-wrap -mx-2">
-            <div class="px-2 w-1/3">
-              <label for="glasses-normal" class="block font-medium mb-2">
-                <input type="radio" id="glasses-normal" name="type" value="Lunettes" class="mr-2">Lunettes
-              </label>
+      </div>
+    
+      <!-- Email Form -->
+      <div id="email-content" class="tab-content">
+        <form action="mailto:lef.kaouthar.9898@gmail.com" method="POST" enctype="text/plain"
+          onsubmit="return validateForm()" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="form-group">
+              <label for="name" class="block text-white font-medium mb-2">Nom Complet</label>
+              <input type="text" id="name" name="name" placeholder="Nom et Prénom" required
+                class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
             </div>
-            <div class="px-2 w-1/3">
-              <label for="glasses-sun" class="block font-medium mb-2">
-                <input type="radio" id="glasses-sun" name="type" value="Lunettes-Soleil" class="mr-2">Lunettes Soleil
-              </label>
+            <div class="form-group">
+              <label for="age" class="block text-white font-medium mb-2">Âge</label>
+              <input type="number" id="age" name="age" placeholder="Votre âge" min="15" required
+                class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
             </div>
-            <div class="px-2 w-1/3">
-              <label for="glasses-lens" class="block font-medium mb-2">
-                <input type="radio" id="glasses-lens" name="type" value="Lentille-contact" class="mr-2">Lentille contact
+          </div>
+    
+          <div class="form-group">
+            <label for="phone" class="block text-white font-medium mb-2">Numéro de Téléphone</label>
+            <input type="tel" id="phone" name="phone" placeholder="Commence avec 06 ou 07" pattern="[0-9]{10,}" required
+              class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300">
+          </div>
+    
+          <div class="form-group">
+            <label class="block text-white font-medium mb-4">Type de Service</label>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="radio" name="type" value="Lunettes" class="w-5 h-5 text-yellow-400">
+                <span class="text-white">Lunettes</span>
+              </label>
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="radio" name="type" value="Lunettes-Soleil" class="w-5 h-5 text-yellow-400">
+                <span class="text-white">Lunettes de Soleil</span>
+              </label>
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="radio" name="type" value="Lentille-contact" class="w-5 h-5 text-yellow-400">
+                <span class="text-white">Lentilles de Contact</span>
               </label>
             </div>
           </div>
-        </div>
-        <div class="mb-4">
-          <label for="message" class="block font-medium mb-2">Message</label>
-          <textarea id="message" name="message" placeholder="Décrivez d&#39avantage afin que nous puissions vous aider"
-            class="text-black border border-yellow-200 p-2 w-full rounded-lg focus:outline-none focus:border-yellow-400"
-            rows="4" required minlength="10"></textarea>
-        </div>
-        <div class="flex justify-center items-center">
-          <button type="submit"
-            class="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition ease-in duration-300">Submit</button>
-        </div>
-      </form>
-      
-      <div x-show="openTab === 2" class="bg-soft-jet rounded-b-lg px-8 py-6 mx-auto w-[30rem] flex justify-center">
-        <a title="Whatsapp contact" href="https://wa.me/212663582989">
-          <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 256 256"
-            class="fill-yellow-400 hover:fill-yellow-600 transition ease-in duration-300">
-            <g transform="translate(1.41 1.41) scale(2.81 2.81)" fill="inherit">
-              <path
-                d="M 45 0 C 20.147 0 0 20.147 0 45 c 0 24.853 20.147 45 45 45 s 45 -20.147 45 -45 C 90 20.147 69.853 0 45 0 z M 45.454 68.712 c -4.304 0 -8.347 -1.1 -11.865 -3.031 L 20 70 l 4.431 -13.068 c -2.235 -3.67 -3.522 -7.974 -3.522 -12.576 C 20.908 30.904 31.898 20 45.454 20 C 59.013 20 70 30.904 70 44.356 S 59.012 68.712 45.454 68.712 z" />
-              <path
-                d="M 45.454 23.879 c -11.38 0 -20.637 9.186 -20.637 20.477 c 0 4.481 1.461 8.63 3.931 12.006 l -2.578 7.605 l 7.931 -2.521 c 3.258 2.139 7.162 3.387 11.354 3.387 c 11.378 0 20.637 -9.185 20.637 -20.476 C 66.092 33.066 56.834 23.879 45.454 23.879 z M 57.499 52.805 c -0.503 1.393 -2.96 2.738 -4.062 2.837 c -1.103 0.1 -1.103 0.897 -7.221 -1.492 c -6.117 -2.391 -9.977 -8.615 -10.278 -9.013 c -0.302 -0.398 -2.457 -3.236 -2.457 -6.174 c 0 -2.937 1.554 -4.382 2.105 -4.979 c 0.552 -0.597 1.204 -0.747 1.605 -0.747 s 0.803 0.05 1.153 0.05 c 0.352 0 0.852 -0.199 1.353 0.996 c 0.501 1.196 1.706 4.133 1.856 4.432 c 0.151 0.299 0.252 0.648 0.05 1.046 c -0.199 0.399 -0.299 0.647 -0.601 0.996 c -0.301 0.348 -0.632 0.778 -0.903 1.046 c -0.301 0.297 -0.614 0.62 -0.264 1.217 c 0.351 0.598 1.559 2.552 3.347 4.134 c 2.298 2.033 4.237 2.664 4.838 2.963 c 0.602 0.299 0.953 0.249 1.304 -0.151 c 0.352 -0.398 1.505 -1.742 1.906 -2.34 c 0.401 -0.597 0.803 -0.497 1.354 -0.298 c 0.55 0.198 3.509 1.643 4.111 1.942 c 0.601 0.298 1.002 0.448 1.153 0.697 C 57.999 50.214 57.999 51.409 57.499 52.805 z" />
-            </g>
-          </svg>
-        </a>
-      
+    
+          <div class="form-group">
+            <label for="message" class="block text-white font-medium mb-2">Message</label>
+            <textarea id="message" name="message" rows="4"
+              placeholder="Décrivez davantage afin que nous puissions vous aider" required minlength="10"
+              class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all duration-300"></textarea>
+          </div>
+    
+          <div class="text-center">
+            <button type="submit"
+              class="btn-primary px-8 py-4 rounded-xl text-white font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg">
+              Envoyer le Message
+            </button>
+          </div>
+        </form>
       </div>
-      
-      
-      </article>
-      <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-      <script>
-        function validateForm() {
-          let phoneInput = document.getElementById('phone');
-          if (phoneInput.value.length < 10) {
-            alert("Phone number should be at least 10 digits");
-            return false;
-          }
+    
+      <!-- WhatsApp Content -->
+      <div id="whatsapp-content" class="tab-content hidden text-center">
+        <div class="py-36">
+          <h3 class="text-2xl font-bold text-white mb-6">Contactez-nous sur WhatsApp</h3>
+          <p class="text-white/80 mb-12">Pour une réponse rapide, envoyez-nous un message sur WhatsApp</p>
+          <a href="https://wa.me/212663582989" class="inline-block transform hover:scale-110 transition-all duration-300">
+            <div class="bg-green-500 hover:bg-green-600 rounded-full p-6 shadow-2xl floating-element">
+              <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.106" />
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+  });
 
-          return true;
-        }
-      </script>
-      </footer>
+  // Scroll animations
+  function animateOnScroll() {
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top;
+      const elementVisible = 150;
 
+      if (elementTop < window.innerHeight - elementVisible) {
+        element.classList.add('animate');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // Run on page load
+
+  // Tab switching
+  function showTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.classList.add('hidden');
+    });
+
+    document.querySelectorAll('#contact-tabs button').forEach(tab => {
+      // remove the actual yellow class(s)
+      tab.classList.remove('active', 'bg-yellow-400', 'bg-yellow-600');
+      tab.classList.add('bg-transparent');
+    });
+
+    document.getElementById(tabName + '-content').classList.remove('hidden');
+
+    const activeTab = document.getElementById(tabName + '-tab');
+    activeTab.classList.add('active', 'bg-yellow-600');
+    activeTab.classList.remove('bg-transparent');
+  }
+
+  // initialize properly
+  document.addEventListener('DOMContentLoaded', () => showTab('email'));
+
+  // Form validation
+  function validateForm() {
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput.value.length < 10) {
+      alert("Le numéro de téléphone doit contenir au moins 10 chiffres");
+      return false;
+    }
+    return true;
+  }
+
+  // // Header scroll effect
+  // window.addEventListener('scroll', function () {
+  //   const header = document.getElementById('header');
+  //   if (window.scrollY > 100) {
+  //     header.style.background = 'rgba(26, 26, 26, 0.95)';
+  //     header.style.backdropFilter = 'blur(20px)';
+  //   } else {
+  //     header.style.background = 'rgba(26, 26, 26, 0)';
+  //     header.style.backdropFilter = 'blur(10px)';
+  //   }
+  // });
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
 </body>
 </html>
